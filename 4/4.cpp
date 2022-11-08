@@ -1,28 +1,37 @@
 #include<iostream>
-#include<vector>
 
-using namespace std;
-int is_sorted(vector<int> v)
+struct Proces
 {
-    for(int i = 1; i < v.size(); i++)
-    {
-        if(v[i] < v[i-1])
-        return -1;
-        
-    }
-    return v[v.size()-1] - v[0];
-}
+    int priority
+};
 
+template <class T>
+class Heap
+{
+ public:
+    Heap();
+    
+    Heap(const Heap&);
+    Heap& operator= (const Heap&);
+
+    Heap(Heap&&) = delete;
+    Heap& operator= (Heap&&) = delete;
+
+    ~Heap();
+
+    const T& top() const;
+    void pop();
+    void push(const &T value);
+    size_t size() const;
+    bool empty() const;
+
+    private:
+    void sift_up(size_t idx);
+    void sift_down(size_t idx);
+
+};
 int main()
 {
-    int n;
-    cin >> n;
-    vector<int> v(n);
-    for(int i = 0; i < v.size(); i++)
-    {
-        cin >> v[i];
-    }
-    cout << is_sorted(v);
-
+   
  
 }
